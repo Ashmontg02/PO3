@@ -92,6 +92,7 @@ public class CharacterController : MonoBehaviour
             Debug.Log("You pressed R2.");
             anim.SetTrigger("AttackR2");
             songController.playSong();
+            AudioSource.PlayClipAtPoint(HHblip, transform.position);
             playSoundWithDelay();
 
         }

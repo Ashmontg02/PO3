@@ -97,6 +97,7 @@ public class SongController : MonoBehaviour
 
     IEnumerator changeTextColor(Text text)
     {
+        yield return new WaitForSeconds(3.0f);
         text.color = Color.green;
         yield return new WaitForSeconds(5.0f);
         text.color = Color.white;

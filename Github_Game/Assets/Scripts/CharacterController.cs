@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Collections;
 using UnityEngine;
 
 /// <summary>
 ///     1. 8-direcitonal movement
 ///     2. stop and face current direction when input is absent.
 /// </summary>
-public class CharacterController : MonoBehaviour
+public class MarioController : MonoBehaviour
 {
     public AudioClip HHblip;
     public AudioClip Perform;
@@ -92,26 +91,12 @@ public class CharacterController : MonoBehaviour
             Debug.Log("You pressed R2.");
             anim.SetTrigger("AttackR2");
             songController.playSong();
-            playSoundWithDelay();
-
+            AudioSource.PlayClipAtPoint(Perform, transform.position);
         }
     }
 
-    IEnumerator playSoundWithDelay(AudioClip Perform, float delay)
-    {
-        yield return new WaitForSeconds(2.0f);
-        AudioSource.PlayClipAtPoint(Perform, transform.position);
-    }
-
-    // then elsewhere when you want to invoke it:
-
-    void playSoundWithDelay()
-    {
-        StartCoroutine(playSoundWithDelay(Perform, 2.0f));
-    }
-
     /// <summary>
-    ///     Input based on horizontal (a,d,<,>) and vertical (w,s,^,v) keys.
+    /// Input based on horizontal (a,d,<,>) and vertical (w,s,^,v) keys.
     /// </summary>
     void GetInput()
     {
@@ -122,7 +107,7 @@ public class CharacterController : MonoBehaviour
     }
 
     /// <summary>
-    ///     Direction relative to the camera's rotation.
+    /// Direction relative to the camera's rotation.
     /// </summary>
     void CalculateDirection()
     {
@@ -132,7 +117,7 @@ public class CharacterController : MonoBehaviour
     }
 
     /// <summary>
-    ///     Rotate towards the calculated angle.
+    /// Rotate towards the calculated angle.
     /// </summary>
     void Rotate()
     {

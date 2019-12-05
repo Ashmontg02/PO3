@@ -7,11 +7,15 @@ public class HealthController : MonoBehaviour
 {
     public float health;
     public float stamina;
+    public float minHealth;
+    public float minStamina;
     public float maxHealth;
     public float maxStamina;
 
     public Slider healthSlider;
     public Slider staminaSlider;
+
+    SongController songController;
 
     void Update()
     {
@@ -21,7 +25,7 @@ public class HealthController : MonoBehaviour
 
     void Start()
     {
-        healthSlider.maxValue = maxHealth;
-        staminaSlider.maxValue = maxStamina;
+        healthSlider.minValue = minHealth;
+        staminaSlider.minValue = minStamina;
     }
 }

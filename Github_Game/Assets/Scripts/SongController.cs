@@ -20,6 +20,9 @@ public class SongController : MonoBehaviour
     public Text healthUp;
     public Text negateStamina;
 
+    private HealthController HealthController;
+    private CharacterController CharacterController;
+
     private List<string> notes = new List<string>();
     private string[] songs = new[]
 {
@@ -48,16 +51,20 @@ public class SongController : MonoBehaviour
             {
                 switch (song)
                 {
-                    case 0:StartCoroutine("changeTextColor", selfImprovement);
+                    case 0:
+                        StartCoroutine("changeTextColor", selfImprovement);
+                        StartCoroutine("changeMovementSpeed");
                         break;
                     case 1:
                         StartCoroutine("changeTextColor", attackUp);
                         break;
                     case 2:
                         StartCoroutine("changeTextColor", healthUp);
+                        StartCoroutine("changeHealthValue");                        
                         break;
                     case 3:
                         StartCoroutine("changeTextColor", negateStamina);
+                        StartCoroutine("changeStaminaValue");
                         break;
                 }
             }
@@ -67,7 +74,8 @@ public class SongController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        HealthController = GetComponent<HealthController>();
+        CharacterController = GetComponent<CharacterController>();
     }
 
     // Update is called once per frame
@@ -101,5 +109,29 @@ public class SongController : MonoBehaviour
         text.color = Color.green;
         yield return new WaitForSeconds(5.0f);
         text.color = Color.white;
+    }
+
+    IEnumerator changeHealthValue()
+    {
+        yield return new WaitForSeconds(3.0f);
+        HealthController.health = 100;
+        yield return new WaitForSeconds(5.0f);
+        HealthController.health = 50;
+    }
+
+    IEnumerator changeStaminaValue()
+    {
+        yield return new WaitForSeconds(3.0f);
+        HealthController.stamina = 100;
+        yield return new WaitForSeconds(5.0f);
+        HealthController.stamina = 50;
+    }
+
+    IEnumerator changeMovementSpeed()
+    {
+        yield return new WaitForSeconds(3.0f);
+        CharacterController.velocity = 10;
+        yield return new WaitForSeconds(5.0f);
+        CharacterController.velocity = 5;
     }
 }

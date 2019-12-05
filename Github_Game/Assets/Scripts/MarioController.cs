@@ -10,6 +10,7 @@ public class CharacterController : MonoBehaviour
 {
     public AudioClip HHblip;
     public AudioClip Perform;
+    public AudioClip hitPomf;
     public float velocity = 5.0f;
     public float turnSpeed = 10.0f;
 
@@ -64,6 +65,7 @@ public class CharacterController : MonoBehaviour
             anim.SetTrigger("AttackCT");
             songController.storeNote("B");
             AudioSource.PlayClipAtPoint(HHblip, transform.position);
+            hitDelay();
         }
         else
         {
@@ -74,6 +76,7 @@ public class CharacterController : MonoBehaviour
                 anim.SetTrigger("AttackCircle");
                 songController.storeNote("C");
                 AudioSource.PlayClipAtPoint(HHblip, transform.position);
+                hitDelay();
             }
 
             //Triangle Button
@@ -83,6 +86,7 @@ public class CharacterController : MonoBehaviour
                 anim.SetTrigger("AttackTriangle");
                 songController.storeNote("T");
                 AudioSource.PlayClipAtPoint(HHblip, transform.position);
+                hitDelay();
             }
         }
 
@@ -93,22 +97,36 @@ public class CharacterController : MonoBehaviour
             anim.SetTrigger("AttackR2");
             songController.playSong();
             AudioSource.PlayClipAtPoint(HHblip, transform.position);
-            playSoundWithDelay();
+            performDelay();
 
         }
     }
 
-    IEnumerator playSoundWithDelay(AudioClip Perform, float delay)
+    IEnumerator performDelay(AudioClip Perform, float delay)
     {
         yield return new WaitForSeconds(2.0f);
         AudioSource.PlayClipAtPoint(Perform, transform.position);
     }
 
-    // then elsewhere when you want to invoke it:
+    //perform
 
-    void playSoundWithDelay()
+    void performDelay()
     {
-        StartCoroutine(playSoundWithDelay(Perform, 2.0f));
+        StartCoroutine(performDelay(Perform, 2.0f));
+    }
+
+    ///hit
+    IEnumerator hitDelay(AudioClip hitPomf, float delay)
+    {
+        yield return new WaitForSeconds(1.5f);
+        AudioSource.PlayClipAtPoint(hitPomf, transform.position);
+    }
+
+    //hit
+
+    void hitDelay()
+    {
+        StartCoroutine(hitDelay(hitPomf, 1.5f));
     }
 
     /// <summary>

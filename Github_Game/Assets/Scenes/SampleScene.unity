@@ -462,6 +462,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HHblip: {fileID: 8300000, guid: e62de96b11ac8614cb406959552a9208, type: 3}
   Perform: {fileID: 8300000, guid: d9a366e0759ad2d4eb12a90ee4b5e7f4, type: 3}
+  hitPomf: {fileID: 8300000, guid: 35159af865c243f42984418c237637c3, type: 3}
   velocity: 5
   turnSpeed: 10
 --- !u!4 &378379732 stripped
@@ -482,10 +483,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb66a62b5e124d447a142e09edd692b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  stamina: 100
-  minHealth: 0
-  minStamina: 0
+  health: 50
+  stamina: 50
   maxHealth: 100
   maxStamina: 100
   healthSlider: {fileID: 2004233438}
@@ -1415,7 +1414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 378379732}
-  offsetPos: {x: 0, y: 2, z: -4}
+  offsetPos: {x: 0, y: 4, z: -4.36}
   moveSpeed: 5
   turnSpeed: 10
   smoothSpeed: 0.5

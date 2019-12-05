@@ -7,8 +7,6 @@ public class HealthController : MonoBehaviour
 {
     public float health;
     public float stamina;
-    public float minHealth;
-    public float minStamina;
     public float maxHealth;
     public float maxStamina;
 
@@ -25,7 +23,7 @@ public class HealthController : MonoBehaviour
 
     void Start()
     {
-        healthSlider.minValue = minHealth;
-        staminaSlider.minValue = minStamina;
+        healthSlider.maxValue = maxHealth;
+        staminaSlider.maxValue = maxStamina;
     }
 }
